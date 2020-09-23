@@ -64,6 +64,36 @@ class Course {
       }
    }
 
+   // CREATE
+   public function create() {
+      $query = 'INSERT INTO 
+                  ' . $this->table . '
+                  SET
+                     name = :name,
+                     code = :code,
+                     progression = :progression,
+                     syllabus = :syllabus';
+      $stmt = $this->conn->prepare($query);
+      
+      // Sanitize input
+      $this->name = htmlspecialchars(strip_tags($this->name));
+      $this->code = htmlspecialchars(strip_tags($this->code));
+      $this->progression = htmlspecialchars(strip_tags($this->progression));
+      $this->syllabus = htmlspecialchars(strip_tags($this->syllabus));
+
+      // Bind data to params
+      $stmt->bindParam(':name', $this->name);
+      $stmt->bindParam(':code', $this->code);
+      $stmt->bindParam(':progression', $this->progression);
+      $stmt->bindParam(':syllabus', $this->syllabus);
+
+      if($stmt->execute()) {
+         return true;
+      }
+
+      return false;
+   }
+
    
 }
 
