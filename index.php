@@ -36,6 +36,22 @@ switch($method) {
       } else {
          $result = $course->read();
       }
+
+      break;
+   case 'POST':
+      $data = json_decode(file_get_contents('php://input'));
+
+      $course->name = $data->name;
+      $course->code = $data->code;
+      $course->progression = $data->progression;
+      $course->syllabus = $data->syllabus;
+
+      if($course->create()) {
+         $result = array('message' => 'Kurs skapad');
+      } else {
+         $result = array('message' => 'Kunde inte skapa kurs');
+      }
+      
       break;
 }
 
