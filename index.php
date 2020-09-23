@@ -3,6 +3,9 @@
  * Johannes Nilsson, HT20
  */
 
+// Required files
+require_once('config/Database.php');
+
 // Set CORS headers
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
@@ -16,6 +19,10 @@ $method = $_SERVER['REQUEST_METHOD'];
 if(isset($_GET['id'])) {
    $id = $_GET['id'];
 }
+
+// Database instance
+$database = new Database();
+$db = $database->connect();
 
 // Depending on which request method is used, return or manipulate data
 switch($method) {
