@@ -70,6 +70,8 @@ switch($method) {
             $result = array('message' => 'Kunde inte uppdatera kurs');
          }
       }
+      
+      break;
 }
 
 // Echo the result as JSON
