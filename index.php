@@ -32,7 +32,7 @@ $course = new Course($dbConn);
 switch($method) {
    case 'GET':
       if(isset($id)) {
-         $result = array('message' => 'En enskild kurs');
+         $result = $course->readSingle($id);
       } else {
          $result = $course->read();
       }
