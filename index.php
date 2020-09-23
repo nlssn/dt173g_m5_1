@@ -5,6 +5,7 @@
 
 // Required files
 require_once('config/Database.php');
+require_once('classes/Course.class.php');
 
 // Set CORS headers
 header('Content-Type: application/json');
@@ -22,7 +23,10 @@ if(isset($_GET['id'])) {
 
 // Database instance
 $database = new Database();
-$db = $database->connect();
+$dbConn = $database->connect();
+
+// Course instance
+$course = new Course($dbConn);
 
 // Depending on which request method is used, return or manipulate data
 switch($method) {
@@ -30,10 +34,13 @@ switch($method) {
       if(isset($id)) {
          $result = array('message' => 'En enskild kurs');
       } else {
-         $result = array('message' => 'Alla kurser');
+         $result = $course->read();
       }
       break;
 }
 
 // Echo the result as JSON
 echo json_encode($result);
+
+// Close DB connection
+$db = $database->close();
