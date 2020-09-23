@@ -127,6 +127,27 @@ class Course {
 
       return false;
    }
+
+   // DELETE
+   public function delete($id) {
+      $query = 'DELETE FROM
+                  ' . $this->table . '
+               WHERE
+                  id = :id';
+      $stmt = $this->conn->prepare($query);
+
+      // Sanitize input
+      $this->id = htmlspecialchars(strip_tags($id));
+
+      // Bind data to params
+      $stmt->bindParam(':id', $this->id);
+
+      if($stmt->execute()) {
+         return true;
+      }
+
+      return false;
+   }
    
 }
 
