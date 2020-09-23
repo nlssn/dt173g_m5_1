@@ -16,3 +16,17 @@ $method = $_SERVER['REQUEST_METHOD'];
 if(isset($_GET['id'])) {
    $id = $_GET['id'];
 }
+
+// Depending on which request method is used, return or manipulate data
+switch($method) {
+   case 'GET':
+      if(isset($id)) {
+         $result = array('message' => 'En enskild kurs');
+      } else {
+         $result = array('message' => 'Alla kurser');
+      }
+      break;
+}
+
+// Echo the result as JSON
+echo json_encode($result);
