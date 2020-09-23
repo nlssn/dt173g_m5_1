@@ -31,10 +31,10 @@ $course = new Course($dbConn);
 // Depending on which request method is used, return or manipulate data
 switch($method) {
    case 'GET':
-      if(isset($id)) {
-         $result = $course->readSingle($id);
-      } else {
+      if(!isset($id)) {
          $result = $course->read();
+      } else {
+         $result = $course->readSingle($id);
       }
 
       break;
