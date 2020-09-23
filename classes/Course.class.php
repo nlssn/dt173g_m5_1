@@ -26,14 +26,14 @@ class Course {
       $num = $stmt->rowCount();
 
       if ($num > 0) {
-         $courses = array();
-         $courses['data'] = array();
-         $courses['itemCount'] = $num;
+         $data = array();
+         $data['data'] = array();
+         $data['itemCount'] = $num;
 
          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             extract($row); // extract data from row as variables
 
-            $c = array(
+            $course = array(
                'id' => $id,
                'name' => $name,
                'code' => $code,
@@ -41,12 +41,30 @@ class Course {
                'syllabus' => $syllabus
             );
 
-            array_push($courses['data'], $c);
+            array_push($data['data'], $course);
          }
 
-         return $courses;
+         return $data;
       } else {
-         return array('message' => 'Inga kurser hittades');
+         return array('message' => 'Hittade inga kurser');
       }
    }
+
+   // READ SINGLE
+   public function readSingle($id) {
+      $query = 'SELECT * FROM ' . $this->table . ' WHERE id = ' . $id . ' LIMIT 1';
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute();
+      $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if($data) {
+         return $data;
+      } else {
+         return array('message' => 'Hittade ingen kurs med angivet ID');
+      }
+   }
+
+   
 }
+
+
