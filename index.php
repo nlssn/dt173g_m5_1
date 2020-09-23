@@ -53,6 +53,23 @@ switch($method) {
       }
       
       break;
+   case 'PUT':
+      if(!isset($id)) {
+         $result = array('message' => 'Ett id krävs');
+      } else {
+         $data = json_decode(file_get_contents('php://input'));
+
+         $course->name = $data->name;
+         $course->code = $data->code;
+         $course->progression = $data->progression;
+         $course->syllabus = $data->syllabus;
+
+         if($course->update($id)) {
+            $result = array('message' => 'Kurs uppdaterad');
+         } else {
+            $result = array('message' => 'Kunde inte uppdatera kurs');
+         }
+      }
 }
 
 // Echo the result as JSON
