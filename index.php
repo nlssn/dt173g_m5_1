@@ -36,7 +36,6 @@ switch($method) {
       } else {
          $result = $course->readSingle($id);
       }
-
       break;
    case 'POST':
       $data = json_decode(file_get_contents('php://input'));
@@ -51,7 +50,6 @@ switch($method) {
       } else {
          $result = array('message' => 'Kunde inte skapa kurs');
       }
-      
       break;
    case 'PUT':
       if(!isset($id)) {
@@ -70,8 +68,20 @@ switch($method) {
             $result = array('message' => 'Kunde inte uppdatera kurs');
          }
       }
-      
       break;
+   case 'DELETE':
+      if(!isset($id)) {
+         $result = array('message' => 'Ett id krävs');
+      } else {
+         if($course->update($id)) {
+            $result = array('message' => 'Kurs raderad');
+         } else {
+            $result = array('message' => 'Kunde inte radera kurs');
+         }
+      }
+      break;
+   default:
+      http_response_code(405);
 }
 
 // Echo the result as JSON
