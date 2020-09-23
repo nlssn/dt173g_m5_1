@@ -68,11 +68,11 @@ class Course {
    public function create() {
       $query = 'INSERT INTO 
                   ' . $this->table . '
-                  SET
-                     name = :name,
-                     code = :code,
-                     progression = :progression,
-                     syllabus = :syllabus';
+               SET
+                  name = :name,
+                  code = :code,
+                  progression = :progression,
+                  syllabus = :syllabus';
       $stmt = $this->conn->prepare($query);
       
       // Sanitize input
@@ -93,7 +93,40 @@ class Course {
 
       return false;
    }
+   
+   // UPDATE
+   public function update($id) {
+      $query = 'UPDATE 
+                  ' . $this->table . '
+               SET
+                  name = :name,
+                  code = :code,
+                  progression = :progression,
+                  syllabus = :syllabus
+               WHERE
+                  id = :id';
+      $stmt = $this->conn->prepare($query);
 
+      // Sanitize input
+      $this->id = htmlspecialchars(strip_tags($id));
+      $this->name = htmlspecialchars(strip_tags($this->name));
+      $this->code = htmlspecialchars(strip_tags($this->code));
+      $this->progression = htmlspecialchars(strip_tags($this->progression));
+      $this->syllabus = htmlspecialchars(strip_tags($this->syllabus));
+
+      // Bind data to params
+      $stmt->bindParam(':id', $this->id);
+      $stmt->bindParam(':name', $this->name);
+      $stmt->bindParam(':code', $this->code);
+      $stmt->bindParam(':progression', $this->progression);
+      $stmt->bindParam(':syllabus', $this->syllabus);
+
+      if($stmt->execute()) {
+         return true;
+      }
+
+      return false;
+   }
    
 }
 
