@@ -4,7 +4,7 @@ class Course {
    private $conn;
 
    // DB table
-   private $table = 'courses';
+   private $table = 'dt173g_m5';
 
    // DB columns
    public $id;
@@ -148,7 +148,6 @@ class Course {
 
       return false;
    }
-   
 }
 
 
