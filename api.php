@@ -7,10 +7,10 @@
 require_once('config/Database.php');
 require_once('classes/Course.class.php');
 
-// Set CORS headers
-header('Content-Type: application/json');
+// Set headers
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 // Save the request method for later use
@@ -73,7 +73,7 @@ switch($method) {
       if(!isset($id)) {
          $result = array('message' => 'Ett id krävs');
       } else {
-         if($course->update($id)) {
+         if($course->delete($id)) {
             $result = array('message' => 'Kurs raderad');
          } else {
             $result = array('message' => 'Kunde inte radera kurs');
