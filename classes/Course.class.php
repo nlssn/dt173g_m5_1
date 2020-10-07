@@ -35,8 +35,8 @@ class Course {
 
             $course = array(
                'id' => $id,
-               'name' => $name,
                'code' => $code,
+               'name' => $name,
                'progression' => $progression,
                'syllabus' => $syllabus
             );
@@ -69,21 +69,21 @@ class Course {
       $query = 'INSERT INTO 
                   ' . $this->table . '
                SET
-                  name = :name,
                   code = :code,
+                  name = :name,
                   progression = :progression,
                   syllabus = :syllabus';
       $stmt = $this->conn->prepare($query);
       
       // Sanitize input
-      $this->name = htmlspecialchars(strip_tags($this->name));
       $this->code = htmlspecialchars(strip_tags($this->code));
+      $this->name = htmlspecialchars(strip_tags($this->name));
       $this->progression = htmlspecialchars(strip_tags($this->progression));
       $this->syllabus = htmlspecialchars(strip_tags($this->syllabus));
 
       // Bind data to params
-      $stmt->bindParam(':name', $this->name);
       $stmt->bindParam(':code', $this->code);
+      $stmt->bindParam(':name', $this->name);
       $stmt->bindParam(':progression', $this->progression);
       $stmt->bindParam(':syllabus', $this->syllabus);
 
@@ -99,8 +99,8 @@ class Course {
       $query = 'UPDATE 
                   ' . $this->table . '
                SET
-                  name = :name,
                   code = :code,
+                  name = :name,
                   progression = :progression,
                   syllabus = :syllabus
                WHERE
@@ -109,15 +109,15 @@ class Course {
 
       // Sanitize input
       $this->id = htmlspecialchars(strip_tags($id));
-      $this->name = htmlspecialchars(strip_tags($this->name));
       $this->code = htmlspecialchars(strip_tags($this->code));
+      $this->name = htmlspecialchars(strip_tags($this->name));
       $this->progression = htmlspecialchars(strip_tags($this->progression));
       $this->syllabus = htmlspecialchars(strip_tags($this->syllabus));
 
       // Bind data to params
       $stmt->bindParam(':id', $this->id);
-      $stmt->bindParam(':name', $this->name);
       $stmt->bindParam(':code', $this->code);
+      $stmt->bindParam(':name', $this->name);
       $stmt->bindParam(':progression', $this->progression);
       $stmt->bindParam(':syllabus', $this->syllabus);
 
