@@ -25,8 +25,9 @@ class Course {
       $stmt->execute();
       $num = $stmt->rowCount();
 
+      $data = array();
+
       if ($num > 0) {
-         $data = array();
          $data['data'] = array();
          $data['itemCount'] = $num;
 
@@ -43,11 +44,9 @@ class Course {
 
             array_push($data['data'], $course);
          }
-
-         return $data;
-      } else {
-         return array('message' => 'Hittade inga kurser');
       }
+
+      return $data;
    }
 
    // READ SINGLE
@@ -57,11 +56,12 @@ class Course {
       $stmt->execute();
       $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      if($data) {
-         return $data;
-      } else {
-         return array('message' => 'Hittade ingen kurs med angivet ID');
+      if(!$data) {
+         $data = array();
       }
+
+      return $data;
+
    }
 
    // CREATE
