@@ -6,7 +6,7 @@ APIet är byggt för att hantera olika kurser som jag studerat under min tid på
 
 En liveversion av APIet finns tillgänligt på https://studenter.miun.se/~joni1307/DT173G/Moment5/Del1/api.php
 
-## Endpoints
+## Användning
 Nedan finns beskrivet hur man nå APIet på olika vis:
 
 |Method |Endpoint     |Beskrivning                                                                            |
