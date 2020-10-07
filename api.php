@@ -55,8 +55,8 @@ switch($method) {
       } else {
          $data = json_decode(file_get_contents('php://input'));
 
-         $course->name = $data->name;
          $course->code = $data->code;
+         $course->name = $data->name;
          $course->progression = $data->progression;
          $course->syllabus = $data->syllabus;
 
