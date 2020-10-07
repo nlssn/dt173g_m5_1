@@ -3,19 +3,9 @@
  * Johannes Nilsson, HT20
  */
 
-// Set headers
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-   header('Access-Control-Allow-Origin: *');
-   header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, OPTIONS');
-   header('Access-Control-Allow-Headers: token, Content-Type');
-   header('Access-Control-Max-Age: 1728000');
-   header('Content-Length: 0');
-   header('Content-Type: text/plain');
-   die();
-}
-
-header("Content-Type: application/json; charset=utf-8");
 header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=utf-8");
+header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT');
 
 // Required files
 require_once('config/Database.php');
@@ -88,8 +78,6 @@ switch($method) {
          }
       }
       break;
-   default:
-      http_response_code(405);
 }
 
 // Echo the result as JSON
