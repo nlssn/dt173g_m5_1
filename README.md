@@ -10,13 +10,13 @@ En fungerande version av APIet finns tillgänligt på https://studenter.miun.se/
 En kopia av 
 Nedan finns beskrivet hur man nå APIet på olika vis:
 
-|Method  |Endpoint            |Beskrivning                                                        |
-|--------|--------------------|-------------------------------------------------------------------|
-|GET     |/api.php            |Hämtar alla tillgängliga kurser.                                   |
-|GET     |/api.php?=<id>      |Hämtar en specifik kurs med angivet ID.                            |
-|POST    |/api.php            |Lagrar en ny kurs. Kräver att ett kurs-objekt skickas med.         |
+|Method  |Endpoint            |Beskrivning                                                                            |
+|--------|--------------------|---------------------------------------------------------------------------------------|
+|GET     |/api.php            |Hämtar alla tillgängliga kurser.                                                       |
+|GET     |/api.php?=<id>      |Hämtar en specifik kurs med angivet ID.                                                |
+|POST    |/api.php            |Lagrar en ny kurs. Kräver att ett kurs-objekt skickas med.                             |
 |PUT     |/api.php?=<id>      |Uppdaterar en existerande kurs med angivet ID. Kräver att ett kurs-objekt skickas med. |
-|DELETE  |/api.php?=<id>      |Raderar en kurs med angivet ID.                                    |
+|DELETE  |/api.php?=<id>      |Raderar en kurs med angivet ID.                                                        |
 
 Ett kurs-objekt skickas som JSON och kan se ut såhär:
 ```
