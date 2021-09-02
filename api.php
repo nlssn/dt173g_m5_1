@@ -1,9 +1,10 @@
 <?php
-/* DTG173G - Moment 5
- * Johannes Nilsson, HT20
+/* Moment 5 - Webbtjänster (Del 1)
+ * Johannes Nilsson, joni1397@studenter.miun.se
+ * HT, 2021
  */
 
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: studenter.miun.se");
 header("Content-Type: application/json; charset=utf-8");
 header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT');
 

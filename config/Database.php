@@ -1,11 +1,15 @@
 <?php
+/* Moment 5 - Webbtjänster (Del 1)
+ * Johannes Nilsson, joni1397@studenter.miun.se
+ * HT, 2021
+ */
    
 class Database {
    // Database login
-   private $host = 'localhost';
-   private $db_name = 'mom5';
-   private $username = 'mom5';
-   private $password = 'password';
+   private $host = '';
+   private $db_name = '';
+   private $username = '';
+   private $password = '';
 
    // Other params
    public $conn;

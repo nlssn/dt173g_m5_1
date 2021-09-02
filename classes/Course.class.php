@@ -1,4 +1,8 @@
 <?php
+/* Moment 5 - Webbtjänster (Del 1)
+ * Johannes Nilsson, joni1397@studenter.miun.se
+ * HT, 2021
+ */
 class Course {
    // Connection
    private $conn;
