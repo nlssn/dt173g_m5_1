@@ -2,7 +2,7 @@
 Detta repository innehåller koden för ett enklare REST API byggt i PHP. APIet är byggt för att hantera olika kurser som jag studerat under min tid på Mittuniversitetet. Grundläggande funktionalitet för CRUD (Create, Read, Update, Delete) är implementerad.
 
 ## Länk
-En liveversion av APIet finns tillgänligt [här](https://studenter.miun.se/~joni1307/DT173G/Moment5/Del1/api.php)
+En liveversion av APIet finns tillgängligt [här](https://studenter.miun.se/~joni1307/DT173G/Moment5/Del1/api.php)
 
 ## Användning
 Nedan finns beskrivet hur man nå APIet på olika vis:
